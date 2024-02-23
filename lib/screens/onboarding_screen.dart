@@ -7,7 +7,7 @@ class OnboardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pageDecoration = const PageDecoration(
+    const pageDecoration = const PageDecoration(
       titleTextStyle: TextStyle(
         fontSize: 28,
         fontWeight: FontWeight.w700,
@@ -62,10 +62,15 @@ class OnboardingScreen extends StatelessWidget {
             fontWeight: FontWeight.w700,
             color: Color.fromARGB(255, 6, 152, 45),
           )),
+      done: const Text("Get Started",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+            color: Color.fromARGB(255, 6, 152, 45),
+          )),
       onDone: () {},
       onSkip: () {},
-      // onBack:(){},
-      dotsDecorator: DotsDecorator(),
+      dotsDecorator: const DotsDecorator(),
     );
   }
 }
