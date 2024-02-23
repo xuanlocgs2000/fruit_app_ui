@@ -7,7 +7,7 @@ class OnboardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const pageDecoration = const PageDecoration(
+    const pageDecoration = PageDecoration(
       titleTextStyle: TextStyle(
         fontSize: 28,
         fontWeight: FontWeight.w700,
@@ -46,25 +46,25 @@ class OnboardingScreen extends StatelessWidget {
       showBackButton: true,
       back: const Text("Back",
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 15,
             fontWeight: FontWeight.w700,
             color: Color.fromARGB(255, 6, 152, 45),
           )),
       skip: const Text("Skip",
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 15,
             fontWeight: FontWeight.w700,
             color: Color.fromARGB(255, 6, 152, 45),
           )),
       next: const Text("Next",
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 15,
             fontWeight: FontWeight.w700,
             color: Color.fromARGB(255, 6, 152, 45),
           )),
       done: const Text("Get Started",
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 15,
             fontWeight: FontWeight.w700,
             color: Color.fromARGB(255, 6, 152, 45),
           )),
