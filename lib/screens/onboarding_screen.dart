@@ -1,76 +1,154 @@
-import 'package:flutter/material.dart';
-import 'package:introduction_screen/introduction_screen.dart';
+import 'dart:html';
 
-class OnboardingScreen extends StatelessWidget {
-  // const OnboardingScreen({super.key});
-  final introKey = GlobalKey<IntroductionScreenState>();
+import 'package:flutter/material.dart';
+import 'package:fruit_app_ui/screens/home_screen.dart';
+import 'package:fruit_app_ui/screens/pageview_model.dart';
+
+class Onboard extends StatefulWidget {
+  const Onboard({super.key});
+
+  @override
+  State<Onboard> createState() => _OnboardState();
+}
+
+class _OnboardState extends State<Onboard> {
+  int currentIndex = 0;
+
+  late PageController _pageController;
+
+  @override
+  void initState() {
+    _pageController = PageController(initialPage: 0);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    const pageDecoration = PageDecoration(
-      titleTextStyle: TextStyle(
-        fontSize: 28,
-        fontWeight: FontWeight.w700,
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        // leading: const EdgeInsets.only(top: 50.0),
+        elevation: 0,
+        actions: [
+          TextButton(
+            onPressed: () {},
+            child: Text("Skip"),
+          )
+        ],
       ),
-      bodyTextStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
-      pageColor: Colors.white,
-      titlePadding: EdgeInsets.all(20.0),
-      bodyPadding: EdgeInsets.zero,
-    );
-
-    return IntroductionScreen(
-      key: introKey,
-      globalBackgroundColor: Colors.white,
-      pages: [
-        PageViewModel(
-          title: 'E Shopping',
-          body: 'Explore  top organic fruits & grab them',
-          image: Image.asset('assets/images/onboarding/obimg1.png'),
-          decoration: pageDecoration,
-        ),
-        PageViewModel(
-          title: 'Delivery on the way',
-          body: 'Get your order by speed delivery',
-          image: Image.asset('assets/images/onboarding/obimg2.png'),
-          decoration: pageDecoration,
-        ),
-        PageViewModel(
-          title: 'Delivery Arrived',
-          body: 'Order is arrived at your Place',
-          image: Image.asset('assets/images/onboarding/obimg3.png'),
-          decoration: pageDecoration,
-        ),
-      ],
-      showSkipButton: false,
-      showDoneButton: false,
-      showBackButton: true,
-      back: const Text("Back",
-          style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.w700,
-            color: Color.fromARGB(255, 6, 152, 45),
-          )),
-      skip: const Text("Skip",
-          style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.w700,
-            color: Color.fromARGB(255, 6, 152, 45),
-          )),
-      next: const Text("Next",
-          style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.w700,
-            color: Color.fromARGB(255, 6, 152, 45),
-          )),
-      done: const Text("Get Started",
-          style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.w700,
-            color: Color.fromARGB(255, 6, 152, 45),
-          )),
-      onDone: () {},
-      onSkip: () {},
-      dotsDecorator: const DotsDecorator(),
+      body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: PageView.builder(
+              itemCount: screens.length,
+              controller: _pageController,
+              physics: NeverScrollableScrollPhysics(),
+              onPageChanged: (int index) {
+                setState(() {
+                  currentIndex = index;
+                });
+              },
+              itemBuilder: (context, index) {
+                return Column(
+                  // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(top: 60.0), //
+                      child: Image.asset(screens[index].image),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 50.0, bottom: 30.0),
+                      child: Text(
+                        screens[index].title,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 27.0,
+                          fontWeight: FontWeight.w100,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      screens[index].body,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 15.0,
+                        fontFamily: 'Poppins',
+                        color: const Color(0xff78787c),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 50.0, bottom: 80.0),
+                      height: 10.0,
+                      child: ListView.builder(
+                          itemCount: screens.length,
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (_, index) {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.symmetric(horizontal: 3.0),
+                                  width: 8.0,
+                                  height: 8,
+                                  decoration: BoxDecoration(
+                                    color: currentIndex == index
+                                        ? Colors.green
+                                        : Color.fromARGB(255, 157, 155, 154),
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                )
+                              ],
+                            );
+                          }),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        if (index == screens.length - 1) {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomeScreen()));
+                        }
+                        _pageController.nextPage(
+                          duration: Duration(microseconds: 300),
+                          curve: Curves.bounceIn,
+                        );
+                      },
+                      child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 30.0, vertical: 10.0),
+                          decoration: BoxDecoration(
+                            color: currentIndex == index
+                                ? Colors.green
+                                : Colors.black,
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                currentIndex == screens.length - 1
+                                    ? "Get started"
+                                    : "Next",
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    color: Colors.white, fontSize: 15.0),
+                              )
+                            ],
+                          )),
+                    ),
+                  ],
+                );
+              })),
     );
   }
 }

@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
         () => Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) =>  OnboardingScreen(),
+              builder: (context) => Onboard(),
             )));
   }
 
@@ -28,13 +28,12 @@ class _SplashScreenState extends State<SplashScreen> {
     return Material(
       child: Stack(
         children: [
-          // Phần nền màu xanh
           Container(
             color: const Color(0xFF69A03A),
             width: double.infinity,
             height: double.infinity,
           ),
-          // Phần chứa ảnh
+
           Positioned(
             bottom: 0,
             left: 0,
@@ -44,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
               fit: BoxFit.contain,
             ),
           ),
-          // Phần chứa text
+          //  text
           Positioned(
             bottom: MediaQuery.of(context).size.height * 0.5,
             left: 0,

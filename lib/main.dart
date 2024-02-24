@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_app_ui/screens/splash_screen.dart';
+import 'package:flutter/services.dart';
+import 'package:fruit_app_ui/screens/onboarding_screen.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   runApp(const MyApp());
 }
 
@@ -14,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(primaryColor: const Color(0xFF69A03A)),
-      home: const SplashScreen(),
+      home: const Onboard(),
     );
   }
 }
