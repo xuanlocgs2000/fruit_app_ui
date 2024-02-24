@@ -39,7 +39,14 @@ class _OnboardState extends State<Onboard> {
         actions: [
           TextButton(
             onPressed: () {},
-            child: Text("Skip"),
+            child: const Text(
+              "Skip",
+              style: TextStyle(
+                fontSize: 15.0,
+                fontFamily: 'Poppins',
+                color: Color(0xff78787c),
+              ),
+            ),
           )
         ],
       ),
@@ -100,9 +107,12 @@ class _OnboardState extends State<Onboard> {
                                   width: 8.0,
                                   height: 8,
                                   decoration: BoxDecoration(
+                                    // border: Color.black,
                                     color: currentIndex == index
-                                        ? Colors.green
-                                        : Color.fromARGB(255, 157, 155, 154),
+                                        ? Color(0xff69A03A)
+                                        : Color.fromARGB(255, 255, 255, 255),
+                                    border: Border.all(color: Colors.green),
+
                                     borderRadius: BorderRadius.circular(10.0),
                                   ),
                                 )
@@ -128,7 +138,7 @@ class _OnboardState extends State<Onboard> {
                               horizontal: 30.0, vertical: 10.0),
                           decoration: BoxDecoration(
                             color: currentIndex == index
-                                ? Colors.green
+                                ? Color(0xff69A03A)
                                 : Colors.black,
                             borderRadius: BorderRadius.circular(10.0),
                           ),
