@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fruit_app_ui/screens/infomation_screen.dart';
-import 'package:fruit_app_ui/screens/loading_screen.dart';
-import 'package:fruit_app_ui/screens/onboarding_screen.dart';
-import 'package:fruit_app_ui/screens/phone_screen.dart';
-import 'package:fruit_app_ui/screens/registerphone_screen.dart';
-import 'package:fruit_app_ui/screens/sucess_screen.dart';
-import 'package:fruit_app_ui/screens/verify_screen.dart';
+import 'package:fruit_app_ui/screens/home/home_screen.dart';
+import 'package:fruit_app_ui/screens/login/infomation_screen.dart';
+import 'package:fruit_app_ui/screens/login/loading_screen.dart';
+import 'package:fruit_app_ui/screens/login/onboarding_screen.dart';
+import 'package:fruit_app_ui/screens/login/phone_screen.dart';
+import 'package:fruit_app_ui/screens/login/registerphone_screen.dart';
+import 'package:fruit_app_ui/screens/login/sucess_screen.dart';
+import 'package:fruit_app_ui/screens/login/verify_screen.dart';
+import 'package:fruit_app_ui/screens/resource/color_manager.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -22,11 +24,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(primaryColor: const Color(0xFF69A03A)),
+      theme: ThemeData(primaryColor: ColorManager.primary),
       // home: const Onboard(),
       // home: RegisterPhoneScreen(),
       // home: LoadingScreen(),
-      home: InfomationScreen(),
+      home: HomeScreen(),
     );
   }
 }

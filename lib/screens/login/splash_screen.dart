@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:fruit_app_ui/screens/home_screen.dart';
-import 'package:fruit_app_ui/screens/onboarding_screen.dart';
+import 'package:fruit_app_ui/screens/home/home_screen.dart';
+import 'package:fruit_app_ui/screens/login/onboarding_screen.dart';
+import 'package:fruit_app_ui/screens/resource/color_manager.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -29,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
       child: Stack(
         children: [
           Container(
-            color: const Color(0xFF69A03A),
+            color: ColorManager.primary,
             width: double.infinity,
             height: double.infinity,
           ),

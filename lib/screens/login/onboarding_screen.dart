@@ -1,8 +1,9 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
-import 'package:fruit_app_ui/screens/home_screen.dart';
-import 'package:fruit_app_ui/screens/pageview_model.dart';
+import 'package:fruit_app_ui/screens/home/home_screen.dart';
+import 'package:fruit_app_ui/screens/login/pageview_model.dart';
+import 'package:fruit_app_ui/screens/resource/color_manager.dart';
 
 class Onboard extends StatefulWidget {
   const Onboard({super.key});
@@ -109,7 +110,7 @@ class _OnboardState extends State<Onboard> {
                                   decoration: BoxDecoration(
                                     // border: Color.black,
                                     color: currentIndex == index
-                                        ? Color(0xff69A03A)
+                                        ? ColorManager.primary
                                         : Color.fromARGB(255, 255, 255, 255),
                                     border: Border.all(color: Colors.green),
 

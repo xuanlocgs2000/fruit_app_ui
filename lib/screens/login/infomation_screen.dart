@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_app_ui/screens/resource/color_manager.dart';
 
 class InfomationScreen extends StatelessWidget {
   const InfomationScreen({super.key});
@@ -59,7 +60,7 @@ class InfomationScreen extends StatelessWidget {
                   height: 52,
                   child: MaterialButton(
                     onPressed: () {},
-                    color: const Color(0xFF69A03A),
+                    color: ColorManager.primary,
                     textColor: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),

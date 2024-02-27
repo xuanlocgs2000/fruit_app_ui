@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_app_ui/screens/num_pad.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:fruit_app_ui/screens/login/num_pad.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:fruit_app_ui/screens/resource/color_manager.dart';
 
-class PhoneScreen extends StatefulWidget {
-  const PhoneScreen({super.key});
+class VerifyScreen extends StatefulWidget {
+  VerifyScreen({super.key});
 
   @override
-  State<PhoneScreen> createState() => _PhoneScreenState();
+  State<VerifyScreen> createState() => _VerifyScreenState();
 }
 
-class _PhoneScreenState extends State<PhoneScreen> {
+class _VerifyScreenState extends State<VerifyScreen> {
   final TextEditingController _myController = TextEditingController();
 
   @override
@@ -18,32 +19,22 @@ class _PhoneScreenState extends State<PhoneScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Text(
+            "Enter The 4 digit code that was \nsend to your Mobile Number ",
+            textAlign: TextAlign.center,
+          ),
           Padding(
             padding: const EdgeInsets.all(50.0),
             child: SizedBox(
               height: 70,
               child: Center(
-                child: IntlPhoneField(
+                child: TextField(
                   controller: _myController,
+                  textAlign: TextAlign.center,
+                  showCursor: false,
+                  style: const TextStyle(fontSize: 16),
                   keyboardType: TextInputType.none,
-                  decoration: const InputDecoration(
-                    labelText: 'Phone Number',
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(),
-                    ),
-                  ),
-                  initialCountryCode: 'VN',
-                  onChanged: (phone) {
-                    print(phone.completeNumber);
-                  },
                 ),
-                // child: TextField(
-                //   controller: _myController,
-                //   textAlign: TextAlign.center,
-                //   showCursor: false,
-                //   style: const TextStyle(fontSize: 16),
-                //   keyboardType: TextInputType.none,
-                // ),
               ),
             ),
           ),
@@ -52,12 +43,22 @@ class _PhoneScreenState extends State<PhoneScreen> {
             height: 52,
             child: MaterialButton(
               onPressed: () {},
-              color: const Color(0xFF69A03A),
+              color: ColorManager.primary,
               textColor: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: const Text("VERIFY"),
+            ),
+          ),
+          const Align(
+            alignment: Alignment.centerRight,
+            child: Padding(
+              padding: EdgeInsets.only(right: 40.0),
+              child: Text(
+                "Resend Again? ",
+                textAlign: TextAlign.left,
+              ),
             ),
           ),
           const SizedBox(height: 100),
