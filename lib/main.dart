@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fruit_app_ui/screens/infomation_screen.dart';
 import 'package:fruit_app_ui/screens/loading_screen.dart';
 import 'package:fruit_app_ui/screens/onboarding_screen.dart';
 import 'package:fruit_app_ui/screens/phone_screen.dart';
 import 'package:fruit_app_ui/screens/registerphone_screen.dart';
 import 'package:fruit_app_ui/screens/sucess_screen.dart';
+import 'package:fruit_app_ui/screens/verify_screen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
       // home: const Onboard(),
       // home: RegisterPhoneScreen(),
       // home: LoadingScreen(),
-      home: PhoneScreen(),
+      home: InfomationScreen(),
     );
   }
 }
