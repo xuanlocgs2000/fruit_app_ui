@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_app_ui/screens/login/phone_screen.dart';
 
 class RegisterPhoneScreen extends StatelessWidget {
   const RegisterPhoneScreen({Key? key}) : super(key: key);
+  void _navigateToPhoneScreen(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => PhoneScreen()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +36,9 @@ class RegisterPhoneScreen extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                     ),
                   ),
+                  onTap: () {
+                    _navigateToPhoneScreen(context);
+                  },
                 ),
                 const SizedBox(height: 30),
                 Text("OR"),

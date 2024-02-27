@@ -1,8 +1,7 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:fruit_app_ui/screens/home/home_screen.dart';
 import 'package:fruit_app_ui/screens/login/pageview_model.dart';
+import 'package:fruit_app_ui/screens/login/registerphone_screen.dart';
 import 'package:fruit_app_ui/screens/resource/color_manager.dart';
 
 class Onboard extends StatefulWidget {
@@ -127,7 +126,7 @@ class _OnboardState extends State<Onboard> {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomeScreen()));
+                                  builder: (context) => RegisterPhoneScreen()));
                         }
                         _pageController.nextPage(
                           duration: Duration(microseconds: 300),

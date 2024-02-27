@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_app_ui/screens/login/sucess_screen.dart';
 import 'package:nuts_activity_indicator/nuts_activity_indicator.dart';
 
 class LoadingScreen extends StatelessWidget {
@@ -16,6 +17,15 @@ class LoadingScreen extends StatelessWidget {
   // final NutsActivityIndicator indicator;
   @override
   Widget build(BuildContext context) {
+    Future.delayed(Duration(seconds: 3), () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                SucessScreen()), // Thay YourNextScreen bằng tên màn hình bạn muốn chuyển đến
+      );
+    });
+
     return Material(
       child: Column(
         // mainAxisAlignment: MainAxisAlignment.center,

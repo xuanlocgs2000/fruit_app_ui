@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_app_ui/screens/home/home_screen.dart';
+import 'package:fruit_app_ui/screens/home/navigation_screen.dart';
 import 'package:fruit_app_ui/screens/resource/color_manager.dart';
 
-class InfomationScreen extends StatelessWidget {
-  const InfomationScreen({super.key});
+class InformationScreen extends StatefulWidget {
+  const InformationScreen({super.key});
+
+  @override
+  _InformationScreenState createState() => _InformationScreenState();
+}
+
+class _InformationScreenState extends State<InformationScreen> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Material(
       child: Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
-
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 35),
@@ -22,6 +30,7 @@ class InfomationScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
+                  controller: nameController,
                   decoration: const InputDecoration(
                     labelText: "Name",
                     labelStyle: TextStyle(
@@ -41,6 +50,7 @@ class InfomationScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
+                  controller: addressController,
                   maxLines: 5,
                   decoration: const InputDecoration(
                     labelText: "Address",
@@ -59,7 +69,32 @@ class InfomationScreen extends StatelessWidget {
                   width: 335,
                   height: 52,
                   child: MaterialButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (nameController.text.isNotEmpty &&
+                          addressController.text.isNotEmpty) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => NavigationScreen(),
+                          ),
+                        );
+                      } else {
+                        // check text box
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            title: Text("Missing Information"),
+                            content: Text("Please fill text"),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () => Navigator.pop(context),
+                                child: Text("OK"),
+                              ),
+                            ],
+                          ),
+                        );
+                      }
+                    },
                     color: ColorManager.primary,
                     textColor: Colors.white,
                     shape: RoundedRectangleBorder(

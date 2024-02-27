@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fruit_app_ui/screens/home/home_screen.dart';
+import 'package:fruit_app_ui/screens/home/navigation_screen.dart';
 import 'package:fruit_app_ui/screens/login/infomation_screen.dart';
 import 'package:fruit_app_ui/screens/login/loading_screen.dart';
 import 'package:fruit_app_ui/screens/login/onboarding_screen.dart';
 import 'package:fruit_app_ui/screens/login/phone_screen.dart';
 import 'package:fruit_app_ui/screens/login/registerphone_screen.dart';
+import 'package:fruit_app_ui/screens/login/splash_screen.dart';
 import 'package:fruit_app_ui/screens/login/sucess_screen.dart';
 import 'package:fruit_app_ui/screens/login/verify_screen.dart';
 import 'package:fruit_app_ui/screens/resource/color_manager.dart';
@@ -28,7 +30,9 @@ class MyApp extends StatelessWidget {
       // home: const Onboard(),
       // home: RegisterPhoneScreen(),
       // home: LoadingScreen(),
-      home: HomeScreen(),
+      // home: HomeScreen(),
+      // home: NavigationScreen(),
+      home: SplashScreen(),
     );
   }
 }

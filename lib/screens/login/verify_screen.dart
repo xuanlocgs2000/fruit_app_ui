@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_app_ui/screens/login/infomation_screen.dart';
 import 'package:fruit_app_ui/screens/login/num_pad.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:fruit_app_ui/screens/resource/color_manager.dart';

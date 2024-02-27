@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_app_ui/screens/login/loading_screen.dart';
 import 'package:fruit_app_ui/screens/login/num_pad.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:fruit_app_ui/screens/resource/color_manager.dart';
@@ -52,7 +53,13 @@ class _PhoneScreenState extends State<PhoneScreen> {
             width: 335,
             height: 52,
             child: MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoadingScreen(),
+                    ));
+              },
               color: ColorManager.primary,
               textColor: Colors.white,
               shape: RoundedRectangleBorder(

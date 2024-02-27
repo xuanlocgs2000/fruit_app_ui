@@ -25,14 +25,14 @@ List<PageViewModel> screens = <PageViewModel>[
     button: Colors.white,
   ),
   PageViewModel(
-    image: 'assets/images/onboarding/obimg1.png',
+    image: 'assets/images/onboarding/obimg2.png',
     title: 'Delivery on the way',
     body: 'Get your order by speed delivery',
     bg: Colors.green,
     button: Colors.white,
   ),
   PageViewModel(
-    image: 'assets/images/onboarding/obimg1.png',
+    image: 'assets/images/onboarding/obimg3.png',
     title: 'Delivery Arrived',
     body: 'Order is arrived at your Place',
     bg: Colors.blue,

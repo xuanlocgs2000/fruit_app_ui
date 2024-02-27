@@ -18,14 +18,16 @@ class _HomeScreenState extends State<HomeScreen> {
           child: AppBar(
             backgroundColor: ColorManager.primary,
             elevation: 0.0,
-            leading: IconButton(
-              icon: Icon(
-                Icons.menu,
+            title: const Text(
+              'HOME',
+              style: TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.bold,
                 color: ColorManager.white,
               ),
-              onPressed: () {},
             ),
-            child:Row(),
+
+            // child:Row(),
           ),
         ));
   }
