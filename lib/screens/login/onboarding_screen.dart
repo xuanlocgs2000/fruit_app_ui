@@ -69,6 +69,8 @@ class _OnboardState extends State<Onboard> {
                     Container(
                       margin: const EdgeInsets.only(top: 60.0), //
                       child: Image.asset(screens[index].image),
+                      width: 200,
+                      height: 200,
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 50.0, bottom: 30.0),
