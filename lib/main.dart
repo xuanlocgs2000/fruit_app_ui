@@ -31,8 +31,8 @@ class MyApp extends StatelessWidget {
       // home: RegisterPhoneScreen(),
       // home: LoadingScreen(),
       // home: HomeScreen(),
-      // home: NavigationScreen(),
-      home: SplashScreen(),
+      home: NavigationScreen(),
+      // home: SplashScreen(),
     );
   }
 }
