@@ -40,6 +40,7 @@ dependencies:
   pin_code_fields: ^8.0.1
   animated_bottom_navigation_bar: ^1.3.3
   iconsax: ^0.0.8
+  flutter_rating_bar: ^4.0.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -66,6 +67,7 @@ flutter:
     - assets/images/onboarding/
     - assets/images/splash/
     - assets/images/icons/
+    - assets/images/fruit/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

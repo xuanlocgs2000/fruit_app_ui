@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_app_ui/screens/home/cart_screen.dart';
-import 'package:fruit_app_ui/screens/home/favourite_screen.dart';
+import 'package:fruit_app_ui/screens/favourite/favourite_screen.dart';
 import 'package:fruit_app_ui/screens/home/home_screen.dart';
 import 'package:fruit_app_ui/screens/home/profile_screen.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';

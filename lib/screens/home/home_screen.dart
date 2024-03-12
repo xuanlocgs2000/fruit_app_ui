@@ -1,112 +1,169 @@
-import 'dart:html';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:fruit_app_ui/screens/resource/color_manager.dart';
+import 'package:fruit_app_ui/screens/home/products_section.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
+  const HomeScreen({Key? key});
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<String> tabs = ["Vegetables ", "Fruits", "Dry Fruits"];
+  int selectedIndex = 0;
+  List<String> categories = ['Vegetables', 'Fruits', 'Dairy'];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView(children: [
-        Container(
-          padding: EdgeInsets.only(top: 30, left: 15, right: 15, bottom: 5.0),
-          decoration: BoxDecoration(
-            color: ColorManager.primary,
-          ),
-          child: Column(children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Fruit Market',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.bold)),
-                Icon(
+    return Material(
+      color: Colors.white,
+      child: SingleChildScrollView(
+        child: Stack(
+          children: [
+            _buildHeaderBackground(),
+            Padding(
+              padding: EdgeInsets.only(top: 30, left: 10, right: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildHeader(),
+                  _buildSearchBar(),
+                  SizedBox(height: 10),
+                  _buildCategories(),
+                  SizedBox(height: 10),
+                  ProductsSection(),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHeaderBackground() {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height / 8,
+      decoration: BoxDecoration(color: ColorManager.primary),
+    );
+  }
+
+  Widget _buildHeader() {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Fruit Market',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              IconButton(
+                icon: Icon(
                   Icons.notifications,
-                  size: 30,
                   color: Colors.white,
                 ),
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 3, bottom: 20),
-            ),
-            Container(
-              // margin: EdgeInsets.only(top: 5, bottom: 0),
-              margin: EdgeInsets.only(top: 5, bottom: 0),
-              padding: EdgeInsets.only(bottom: 6),
-              width: MediaQuery.of(context).size.width,
-              height: 40,
-              decoration: BoxDecoration(
-                color: ColorManager.white,
-                borderRadius: BorderRadius.circular(10),
+                onPressed: () {},
               ),
-              child: TextFormField(
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Search',
-                  hintStyle:
-                      TextStyle(color: ColorManager.black.withOpacity(0.5)),
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: ColorManager.black.withOpacity(0.3),
-                    size: 25,
-                  ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSearchBar() {
+    return Container(
+      margin: EdgeInsets.only(top: 15, bottom: 20),
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height / 18,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            spreadRadius: 3,
+            blurRadius: 6,
+          ),
+        ],
+      ),
+      child: TextFormField(
+        decoration: InputDecoration(
+          alignLabelWithHint: true,
+          border: InputBorder.none,
+          hintText: 'Search',
+          hintStyle: TextStyle(
+            color: ColorManager.black.withOpacity(0.3),
+          ),
+          prefixIcon: Icon(
+            Icons.search,
+            color: ColorManager.black.withOpacity(0.3),
+            size: 20,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCategories() {
+    return Padding(
+      padding: EdgeInsets.only(left: 5, right: 5),
+      child: SizedBox(
+        height: 45,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: categories
+              .asMap()
+              .entries
+              .map((MapEntry map) => _getCategory(map.key))
+              .toList(),
+        ),
+      ),
+    );
+  }
+
+  Widget _getCategory(int index) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedIndex = index;
+        });
+      },
+      child: Row(
+        children: [
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 2),
+            width: 100,
+            height: 30,
+            decoration: BoxDecoration(
+              color: selectedIndex == index
+                  ? ColorManager.orange
+                  : ColorManager.white,
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: Center(
+              child: Text(
+                categories[index],
+                style: TextStyle(
+                  color:
+                      selectedIndex == index ? ColorManager.white : Colors.grey,
+                  fontSize: 14,
                 ),
               ),
             ),
-            // SizedBox(
-            //   height: 20,
-            // ),
-          ]),
-        ),
-        // ListView.builder(
-        //   shrinkWrap: true,
-        //   itemBuilder: (BuildContext context, int index) {
-        //     return FittedBox(
-        //       child: Container(
-        //         height: 40,
-        //         margin: EdgeInsets.all(8),
-        //         padding: EdgeInsets.only(left: 15, right: 15),
-        //         decoration: BoxDecoration(
-        //           color: ColorManager.black.withOpacity(0.05),
-        //         ),
-        Center(
-          child: FittedBox(
-            child: Text(
-              'Category',
-              style: TextStyle(
-                color: ColorManager.black,
-                fontSize: 18,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.bold,
-              ),
-            ),
           ),
-        ),
-        //       ),
-        //     );
-        //   },
-        //   itemCount: tabs.length,
-        //   scrollDirection: Axis.horizontal,
-        // ),
-      ]),
+        ],
+      ),
     );
   }
 }
