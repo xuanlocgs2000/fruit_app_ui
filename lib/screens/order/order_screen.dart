@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:fruit_app_ui/screens/resource/color_manager.dart';
 import 'package:fruit_app_ui/screens/product/ratingBar.dart';
 
-class FavouriteScreen extends StatelessWidget {
-  const FavouriteScreen({Key? key});
+class OrderScreen extends StatefulWidget {
+  const OrderScreen({super.key});
 
+  @override
+  State<OrderScreen> createState() => _OrderScreenState();
+}
+
+class _OrderScreenState extends State<OrderScreen> {
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -45,7 +50,7 @@ class FavouriteScreen extends StatelessWidget {
               ),
               SizedBox(width: 10),
               Text(
-                "Favourite",
+                "My order",
                 style: TextStyle(
                   color: ColorManager.white,
                   fontSize: 15,
@@ -77,6 +82,7 @@ class FavouriteScreen extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(15),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           _buildProductImage(),
           SizedBox(width: 10),
@@ -105,16 +111,23 @@ class FavouriteScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildProductNameAndPrice(),
+        RatingBarWidget(),
         Text(
-          'Pick up from organic farms',
+          'Rate this Product ',
           style: TextStyle(
-            color: ColorManager.black,
+            color: ColorManager.grey1,
             fontSize: 10,
             fontFamily: 'Poppins',
           ),
         ),
-        RatingBarWidget(),
-        _buildQuantityControls(),
+        Text(
+          'Delivered on 24 Feb 2021.',
+          style: TextStyle(
+            color: ColorManager.black,
+            fontSize: 12,
+            fontFamily: 'Poppins',
+          ),
+        ),
       ],
     );
   }
@@ -131,62 +144,27 @@ class FavouriteScreen extends StatelessWidget {
             fontFamily: 'Poppins',
           ),
         ),
-        Text(
-          '160 Per/ kg',
-          style: TextStyle(
-            color: ColorManager.black,
-            fontSize: 14,
-            fontFamily: 'Poppins',
-          ),
-        ),
+        //
+        Spacer(), // error spacer
+        // _buildNextButton(),
+        Icon(Icons.arrow_forward_ios, size: 12),
       ],
     );
   }
 
-  Widget _buildQuantityControls() {
-    return Row(
-      children: [
-        IconButton(
-          color: ColorManager.black,
-          icon: Icon(Icons.remove),
-          onPressed: () {},
-        ),
-        Text(
-          '2',
-          style: TextStyle(
-            color: ColorManager.black,
-            fontSize: 15,
-            fontFamily: 'Poppins',
-          ),
-        ),
-        IconButton(
-          color: ColorManager.black,
-          icon: Icon(Icons.add),
-          onPressed: () {},
-        ),
-        SizedBox(width: 100),
-        _buildAddButton(),
-      ],
-    );
-  }
-
-  Widget _buildAddButton() {
+  Widget _buildNextButton() {
     return ElevatedButton(
       onPressed: () {},
       style: ElevatedButton.styleFrom(
-        backgroundColor: ColorManager.orange,
-        foregroundColor: Colors.white,
-        elevation: 5,
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
+        backgroundColor: Colors.white,
+        foregroundColor: const Color.fromARGB(255, 0, 0, 0),
+        elevation: 0.5,
         textStyle: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.bold,
         ),
       ),
-      child: Text('Add'),
+      child: Icon(Icons.arrow_forward_ios, size: 12),
     );
   }
 }
