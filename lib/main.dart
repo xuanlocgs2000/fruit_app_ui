@@ -34,10 +34,10 @@ class MyApp extends StatelessWidget {
       // home: RegisterPhoneScreen(),
       // home: LoadingScreen(),
       // home: HomeScreen(),
-      // home: NavigationScreen(),
+      home: NavigationScreen(),
       // home: SplashScreen(),
       // home: ProductDetails(),
-      home: FavouriteScreen(),
+      // home: FavouriteScreen(),
     );
   }
 }

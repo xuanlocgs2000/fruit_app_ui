@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fruit_app_ui/screens/product/productDetail_screen.dart';
 import 'package:fruit_app_ui/screens/resource/color_manager.dart';
+import 'package:fruit_app_ui/screens/product/ratingBar.dart';
 
 class ProductsSection extends StatefulWidget {
   const ProductsSection({super.key});
@@ -84,7 +85,7 @@ class _ProductsSectionState extends State<ProductsSection> {
         Container(
           width: 115,
           height: 230,
-          margin: EdgeInsets.symmetric(horizontal: 10),
+          margin: EdgeInsets.only(top: 10, right: 10),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -172,7 +173,7 @@ class _ProductsSectionState extends State<ProductsSection> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildRatingBar(),
+          RatingBarWidget(),
           SizedBox(height: 10),
           Text(
             'Cherry',
@@ -191,25 +192,6 @@ class _ProductsSectionState extends State<ProductsSection> {
           )
         ],
       ),
-    );
-  }
-
-  Widget _buildRatingBar() {
-    return RatingBar.builder(
-      initialRating: 3,
-      minRating: 1,
-      direction: Axis.horizontal,
-      allowHalfRating: true,
-      itemCount: 5,
-      itemSize: 12,
-      itemPadding: EdgeInsets.symmetric(horizontal: 0),
-      itemBuilder: (context, _) => Icon(
-        Icons.star,
-        color: Colors.amber,
-      ),
-      onRatingUpdate: (rating) {
-        print(rating);
-      },
     );
   }
 }

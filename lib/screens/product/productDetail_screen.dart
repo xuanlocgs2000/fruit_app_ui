@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_app_ui/screens/resource/color_manager.dart';
+import 'package:fruit_app_ui/screens/product/ratingBar.dart';
 
 class ProductDetails extends StatelessWidget {
   const ProductDetails({Key? key});

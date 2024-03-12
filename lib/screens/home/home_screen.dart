@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_app_ui/screens/resource/color_manager.dart';
 import 'package:fruit_app_ui/screens/home/products_section.dart';
+import 'package:fruit_app_ui/screens/product/ratingBar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key});
@@ -117,15 +118,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildCategories() {
     return Padding(
-      padding: EdgeInsets.only(left: 5, right: 5),
+      padding: EdgeInsets.only(left: 15, right: 15),
       child: SizedBox(
         height: 45,
         child: ListView(
           scrollDirection: Axis.horizontal,
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: categories
               .asMap()
               .entries
-              .map((MapEntry map) => _getCategory(map.key))
+              .map((MapEntry<int, String> map) => _getCategory(map.key))
               .toList(),
         ),
       ),
@@ -140,10 +142,13 @@ class _HomeScreenState extends State<HomeScreen> {
         });
       },
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//
         children: [
           Container(
             margin: EdgeInsets.symmetric(horizontal: 2),
-            width: 100,
+            width: MediaQuery.of(context).size.width / 3.5,
+            // width: ,
             height: 30,
             decoration: BoxDecoration(
               color: selectedIndex == index

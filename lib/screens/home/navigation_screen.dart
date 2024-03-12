@@ -34,8 +34,11 @@ class _NavigationScreenState extends State<NavigationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+      extendBody: true,
+      body: Expanded(
+        child: Container(
+          child: _widgetOptions.elementAt(_selectedIndex),
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -61,6 +64,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
         unselectedItemColor: ColorManager.lightGrey,
         onTap: _onItemTapped,
       ),
+      // extendBody: true,
     );
   }
 }
