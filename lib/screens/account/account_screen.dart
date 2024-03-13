@@ -4,6 +4,45 @@ import 'package:fruit_app_ui/screens/resource/color_manager.dart';
 import 'package:fruit_app_ui/screens/home/products_section.dart';
 import 'package:fruit_app_ui/screens/product/ratingBar.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:fruit_app_ui/model/menuItem_model.dart';
+
+List<MenuItem> menuItem = [
+  MenuItem(
+    title: 'My Orders',
+    buttonText: 'My Orders',
+    icon: Icons.shopping_bag,
+  ),
+  MenuItem(
+    title: 'Profile',
+    buttonText: 'Profile',
+    icon: Iconsax.personalcard,
+  ),
+  MenuItem(
+    title: 'Favourite',
+    buttonText: 'My Wishlist',
+    icon: Icons.favorite,
+  ),
+  MenuItem(
+    title: 'My cart',
+    buttonText: 'Cart',
+    icon: Icons.shopping_cart,
+  ),
+  MenuItem(
+    title: 'Settings',
+    buttonText: 'Settings',
+    icon: Icons.reviews_outlined,
+  ),
+  MenuItem(
+    title: 'Rate us',
+    buttonText: 'Rate',
+    icon: Icons.reviews_outlined,
+  ),
+  MenuItem(
+    title: 'Logout',
+    buttonText: 'Logout',
+    icon: Icons.logout,
+  ),
+];
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -109,52 +148,3 @@ class AccountScreen extends StatelessWidget {
     );
   }
 }
-
-class MenuItem {
-  final String title;
-  final String buttonText;
-  final IconData icon;
-  MenuItem({
-    required this.title,
-    required this.buttonText,
-    required this.icon,
-  });
-}
-
-List<MenuItem> menuItem = [
-  MenuItem(
-    title: 'My Orders',
-    buttonText: 'My Orders',
-    icon: Icons.shopping_bag,
-  ),
-  MenuItem(
-    title: 'Profile',
-    buttonText: 'Profile',
-    icon: Iconsax.personalcard,
-  ),
-  MenuItem(
-    title: 'Favourite',
-    buttonText: 'My Wishlist',
-    icon: Icons.favorite,
-  ),
-  MenuItem(
-    title: 'My cart',
-    buttonText: 'Cart',
-    icon: Icons.shopping_cart,
-  ),
-  MenuItem(
-    title: 'Settings',
-    buttonText: 'Settings',
-    icon: Icons.reviews_outlined,
-  ),
-  MenuItem(
-    title: 'Rate us',
-    buttonText: 'Rate',
-    icon: Icons.reviews_outlined,
-  ),
-  MenuItem(
-    title: 'Logout',
-    buttonText: 'Logout',
-    icon: Icons.logout,
-  ),
-];
