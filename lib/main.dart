@@ -15,6 +15,7 @@ import 'package:fruit_app_ui/screens/home/products_section.dart';
 import 'package:fruit_app_ui/screens/product/productDetail_screen.dart';
 import 'package:fruit_app_ui/screens/favourite/favourite_screen.dart';
 import 'package:fruit_app_ui/screens/order/order_screen.dart';
+import 'package:fruit_app_ui/screens/account/account_screen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -35,11 +36,12 @@ class MyApp extends StatelessWidget {
       // home: RegisterPhoneScreen(),
       // home: LoadingScreen(),
       // home: HomeScreen(),
-      // home: NavigationScreen(),
+      home: NavigationScreen(),
       // home: SplashScreen(),
       // home: ProductDetails(),
       // home: FavouriteScreen(),
-      home: OrderScreen(),
+      // home: OrderScreen(),
+      // home: AccountScreen(),
     );
   }
 }

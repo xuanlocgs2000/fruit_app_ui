@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:fruit_app_ui/screens/home/cart_screen.dart';
 import 'package:fruit_app_ui/screens/favourite/favourite_screen.dart';
 import 'package:fruit_app_ui/screens/home/home_screen.dart';
-import 'package:fruit_app_ui/screens/home/profile_screen.dart';
+// import 'package:fruit_app_ui/screens/home/profile_screen.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:fruit_app_ui/screens/resource/color_manager.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:fruit_app_ui/screens/account/account_screen.dart';
 
 class NavigationScreen extends StatefulWidget {
   const NavigationScreen({super.key});
@@ -23,7 +24,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
     HomeScreen(),
     CartScreen(),
     FavouriteScreen(),
-    ProfileScreen(),
+    AccountScreen(),
   ];
   void _onItemTapped(int index) {
     setState(() {
