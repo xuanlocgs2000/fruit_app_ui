@@ -5,7 +5,7 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:fruit_app_ui/screens/resource/color_manager.dart';
 
 class PhoneScreen extends StatefulWidget {
-  const PhoneScreen({super.key});
+  const PhoneScreen({Key? key});
 
   @override
   State<PhoneScreen> createState() => _PhoneScreenState();
@@ -20,54 +20,8 @@ class _PhoneScreenState extends State<PhoneScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(50.0),
-            child: SizedBox(
-              height: 70,
-              child: Center(
-                child: IntlPhoneField(
-                  controller: _myController,
-                  keyboardType: TextInputType.none,
-                  decoration: const InputDecoration(
-                    labelText: 'Phone Number',
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(),
-                    ),
-                  ),
-                  initialCountryCode: 'VN',
-                  onChanged: (phone) {
-                    print(phone.completeNumber);
-                  },
-                ),
-                // child: TextField(
-                //   controller: _myController,
-                //   textAlign: TextAlign.center,
-                //   showCursor: false,
-                //   style: const TextStyle(fontSize: 16),
-                //   keyboardType: TextInputType.none,
-                // ),
-              ),
-            ),
-          ),
-          SizedBox(
-            width: 335,
-            height: 52,
-            child: MaterialButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LoadingScreen(),
-                    ));
-              },
-              color: ColorManager.primary,
-              textColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: const Text("VERIFY"),
-            ),
-          ),
+          _buildPhoneField(),
+          _buildVerifyButton(context),
           const SizedBox(height: 100),
           NumPad(
             buttonSize: 75,
@@ -78,20 +32,75 @@ class _PhoneScreenState extends State<PhoneScreen> {
               _myController.text = _myController.text
                   .substring(0, _myController.text.length - 1);
             },
-            //
             onSubmit: () {
-              debugPrint('SDT: ${_myController.text}');
-              showDialog(
-                  context: context,
-                  builder: (_) => AlertDialog(
-                        content: Text(
-                          "SDT: ${_myController.text}",
-                          style: const TextStyle(fontSize: 30),
-                        ),
-                      ));
+              _showPhoneNumberDialog();
             },
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildPhoneField() {
+    return Padding(
+      padding: const EdgeInsets.all(50.0),
+      child: SizedBox(
+        height: 70,
+        child: Center(
+          child: IntlPhoneField(
+            controller: _myController,
+            keyboardType: TextInputType.none,
+            decoration: const InputDecoration(
+              labelText: 'Phone Number',
+              border: OutlineInputBorder(
+                borderSide: BorderSide(),
+              ),
+            ),
+            initialCountryCode: 'VN',
+            onChanged: (phone) {
+              print(phone.completeNumber);
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildVerifyButton(BuildContext context) {
+    return SizedBox(
+      width: 335,
+      height: 52,
+      child: MaterialButton(
+        onPressed: () {
+          _navigateToLoadingScreen(context);
+        },
+        color: ColorManager.primary,
+        textColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        child: const Text("VERIFY"),
+      ),
+    );
+  }
+
+  void _navigateToLoadingScreen(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => LoadingScreen(),
+      ),
+    );
+  }
+
+  void _showPhoneNumberDialog() {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        content: Text(
+          "SDT: ${_myController.text}",
+          style: const TextStyle(fontSize: 30),
+        ),
       ),
     );
   }

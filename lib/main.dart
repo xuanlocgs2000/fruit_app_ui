@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(primaryColor: ColorManager.primary),
-      // home: const Onboard(),
+      home: const Onboard(),
       // home: RegisterPhoneScreen(),
       // home: LoadingScreen(),
       // home: HomeScreen(),
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
       // home: SplashScreen(),
       // home: ProductDetails(),
       // home: FavouriteScreen(),
-      home: OrderScreen(),
+      // home: OrderScreen(),
     );
   }
 }
