@@ -111,7 +111,9 @@ class _OrderScreenState extends State<OrderScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildProductNameAndPrice(),
-        RatingBarWidget(),
+        RatingBarWidget(
+          starColor: ColorManager.grey1,
+        ),
         Text(
           'Rate this Product ',
           style: TextStyle(

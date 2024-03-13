@@ -113,7 +113,9 @@ class FavouriteScreen extends StatelessWidget {
             fontFamily: 'Poppins',
           ),
         ),
-        RatingBarWidget(),
+        RatingBarWidget(
+          starColor: ColorManager.orange,
+        ),
         _buildQuantityControls(),
       ],
     );

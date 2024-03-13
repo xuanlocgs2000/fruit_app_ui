@@ -173,7 +173,9 @@ class _ProductsSectionState extends State<ProductsSection> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          RatingBarWidget(),
+          RatingBarWidget(
+            starColor: ColorManager.orange,
+          ),
           SizedBox(height: 10),
           Text(
             'Cherry',

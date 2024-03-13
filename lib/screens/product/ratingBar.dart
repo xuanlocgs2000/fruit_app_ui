@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class RatingBarWidget extends StatelessWidget {
+  final Color starColor; // Thêm thuộc tính màu sắc
+
+  const RatingBarWidget({Key? key, required this.starColor}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return _buildRatingBar();
@@ -18,7 +22,7 @@ class RatingBarWidget extends StatelessWidget {
       itemPadding: EdgeInsets.symmetric(horizontal: 0),
       itemBuilder: (context, _) => Icon(
         Icons.star,
-        color: Colors.amber,
+        color: starColor, // Sử dụng màu sắc được truyền vào
       ),
       onRatingUpdate: (rating) {
         print(rating);
