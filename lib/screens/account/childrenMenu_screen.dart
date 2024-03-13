@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app_ui/screens/resource/color_manager.dart';
 import 'package:fruit_app_ui/model/menuItem_model.dart';
+import 'package:fruit_app_ui/screens/resource/header.dart';
 
 List<MenuItem> menuChildrenItem = [
   MenuItem(
@@ -37,48 +38,15 @@ class ChildrenMenuScreen extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              _buildHeader(context),
+              HeaderWidget(
+                  context: context,
+                  headerHeight: MediaQuery.of(context).size.height / 10),
               SizedBox(height: 10),
               _buildMenuList()
             ],
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildHeader(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height / 10,
-          decoration: BoxDecoration(color: ColorManager.primary),
-        ),
-        Padding(
-          padding: EdgeInsets.only(top: 30, left: 10, right: 10),
-          child: Row(
-            children: [
-              IconButton(
-                color: ColorManager.white,
-                icon: Icon(Icons.arrow_back_ios),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-              SizedBox(width: 10),
-              Text(
-                "Setting",
-                style: TextStyle(
-                  color: ColorManager.white,
-                  fontSize: 15,
-                  fontFamily: 'Poppins',
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
     );
   }
 

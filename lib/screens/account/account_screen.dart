@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:fruit_app_ui/screens/resource/color_manager.dart';
 import 'package:fruit_app_ui/screens/home/products_section.dart';
 import 'package:fruit_app_ui/screens/product/ratingBar.dart';
+import 'package:fruit_app_ui/screens/resource/menu.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:fruit_app_ui/model/menuItem_model.dart';
+import 'package:fruit_app_ui/screens/resource/header.dart';
 
 List<MenuItem> menuItem = [
   MenuItem(
@@ -62,7 +64,8 @@ class AccountScreen extends StatelessWidget {
                 children: [
                   _buildHeader(),
                   SizedBox(height: 20),
-                  _buildMenuList(),
+                  // _buildMenuList(),
+                  MenuListWidget(menuList: menuItem),
                 ],
               ),
             ),
@@ -127,24 +130,6 @@ class AccountScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildMenuList() {
-    return
-        // padding: EdgeInsets.only(left: 10),
-        ListView.separated(
-      shrinkWrap: true,
-      itemBuilder: (_, index) => ListTile(
-        leading: Icon(menuItem[index].icon, color: ColorManager.primary),
-        title: Text(menuItem[index].title),
-        // trailing: Icon(Icons.chevron_right),
-      ),
-      separatorBuilder: (_, __) => Container(
-        height: 1,
-        decoration: BoxDecoration(color: Color.fromARGB(255, 219, 212, 212)),
-      ),
-      itemCount: menuItem.length,
     );
   }
 }
